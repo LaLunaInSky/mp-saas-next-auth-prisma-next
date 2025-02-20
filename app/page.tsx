@@ -36,9 +36,9 @@ export default async function Home() {
               </a>
               <DropdownMenuItem>Preço</DropdownMenuItem>
               <DropdownMenuItem>
-                <Link href="/login">
-                  <Button variant={'bg-white'}>Login</Button>
-                </Link>
+                <Link href={session?"/dashboard":"/login"}>
+                  <Button variant={'bg-white'}>{session?"Dashboard":"Login"}</Button>
+              </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
