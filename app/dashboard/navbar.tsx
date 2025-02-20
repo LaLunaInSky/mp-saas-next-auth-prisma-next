@@ -14,6 +14,7 @@ import {
 import { cn } from '@/lib/utils';
 import { User } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { LogoutAction } from './logoutAction';
 
 export default function Navbar({ userName }: { userName: string }) {
   const pathname = usePathname();
@@ -62,7 +63,11 @@ export default function Navbar({ userName }: { userName: string }) {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <button>Logout</button>
+                <button
+                  onClick={(LogoutAction)}
+                >
+                  Logout
+                </button>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

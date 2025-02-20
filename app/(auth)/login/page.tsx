@@ -7,8 +7,16 @@ import {
 import Link from 'next/link';
 import { LoginForm } from './login-form';
 import { Suspense } from 'react';
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
 export default async function LoginPage() {
+  const session = await auth()
+
+  if (session) {
+    redirect('/dashboard')
+  }
+  
   return (
     <>
       <Card className="max-w-sm w-full rounded-2xl mt-12">

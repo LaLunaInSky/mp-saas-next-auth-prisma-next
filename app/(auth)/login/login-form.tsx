@@ -6,11 +6,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useActionState } from "react";
 import { LoginAction } from "./loginAction";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export function LoginForm(){
-
     const [state, formAction, isPeding] = useActionState(LoginAction, null)
+    
+    if (isPeding == true) {
+        const router = useRouter()
+        router.refresh()
+    }
 
     return (
         <>
