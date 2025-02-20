@@ -2,6 +2,7 @@
 
 import db from "@/lib/db"
 import { hashSync } from "bcrypt-ts"
+import { redirect } from "next/navigation"
 
 export async function RegisterAction(_prevState: any, formData: FormData){
     const entries = Array.from(formData.entries())
@@ -45,8 +46,5 @@ export async function RegisterAction(_prevState: any, formData: FormData){
         }
     })
 
-    return {
-        message: "Usuário criadocom sucesso.",
-        success: true,
-    }
+    return redirect("/login")
 }
