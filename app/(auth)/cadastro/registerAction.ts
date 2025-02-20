@@ -16,7 +16,10 @@ export async function RegisterAction(_prevState: any, formData: FormData){
 
     // se não tiver nome, email ou senha, retorna erro
     if (!data.name || !data.email || !data.password) {
-        throw new Error("Você precisa passar todos os dados!")
+        return {
+            message: "Você precisa passar todos os dados!",
+            success: false,
+        }
     }
 
     // se um usuário já existir, retorna erro
@@ -27,7 +30,10 @@ export async function RegisterAction(_prevState: any, formData: FormData){
     })
 
     if (user) {
-        throw new Error("Este usuário já foi registrado!")
+        return {
+            message: "Este usuário já foi registrado!",
+            success: false,
+        }
     }
 
     // se não existir o usuário, cria o mesmo
@@ -38,4 +44,9 @@ export async function RegisterAction(_prevState: any, formData: FormData){
             password: hashSync(data.password)
         }
     })
+
+    return {
+        message: "Usuário criadocom sucesso.",
+        success: true,
+    }
 }
