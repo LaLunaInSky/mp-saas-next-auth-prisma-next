@@ -20,7 +20,7 @@ export async function RegisterAction(_prevState: any, formData: FormData){
     }
 
     // se um usuário já existir, retorna erro
-    const user = db.user.findUnique({
+    const user = await db.user.findUnique({
         where: {
             email: data.email,
         },
