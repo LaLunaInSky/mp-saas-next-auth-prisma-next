@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useActionState } from "react";
 import { LoginAction } from "./loginAction";
+import { redirect } from "next/navigation";
 
 export function LoginForm(){
 
