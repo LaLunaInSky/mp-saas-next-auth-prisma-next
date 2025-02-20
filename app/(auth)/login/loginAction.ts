@@ -8,7 +8,7 @@ export async function LoginAction(_prevState: any,formData: FormData){
         return {
             success: true,
         }
-    } catch (error) {
+    } catch (error:any) {
         if (error.type === "CredentialsSignin") {
             return {
                 message: "Dados de Login Incorretos.",

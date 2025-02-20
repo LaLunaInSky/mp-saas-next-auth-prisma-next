@@ -14,8 +14,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import logo from './assets/logo.svg';
 import womanImg from './assets/woman.svg';
+import { auth } from '@/auth';
 
 export default async function Home() {
+  const session = await auth()
+  
   return (
     <main>
       <section className="container mx-auto text-center pb-20 px-2 md:px-0">
@@ -46,8 +49,8 @@ export default async function Home() {
             <Link href={'#preco'}>
               <Button variant={'link'}>Preço</Button>
             </Link>
-            <Link href="/login">
-              <Button variant={'bg-white'}>Login</Button>
+            <Link href={session?"/dashboard":"/login"}>
+              <Button variant={'bg-white'}>{session?"Dashboard":"Login"}</Button>
             </Link>
           </div>
         </nav>
